@@ -1,0 +1,112 @@
+> [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(26)[0;36mmain[0;34m()[0m
+[0;32m     25 [0;31m[0;34m[0m[0m
+[0m[0;32m---> 26 [0;31m    [0margs[0m [0;34m=[0m [0mcreate_argparser[0m[0;34m([0m[0;34m)[0m[0;34m.[0m[0mparse_args[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m     27 [0;31m[0;34m[0m[0m
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(28)[0;36mmain[0;34m()[0m
+[0;32m     27 [0;31m[0;34m[0m[0m
+[0m[0;32m---> 28 [0;31m    [0mdist_util[0m[0;34m.[0m[0msetup_dist[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m     29 [0;31m    [0mlogger[0m[0;34m.[0m[0mconfigure[0m[0;34m([0m[0mdir[0m[0;34m=[0m[0margs[0m[0;34m.[0m[0moutputs_dir[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> Breakpoint 1 at /group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py:35
+ipdb> Logging to /group/40034/yaoweili/tmp_ckpt/DEUBUG0002_LR_1e-4_BTS_8*1_5_CFG0.1_ImgaNet64
+creating model and diffusion...
+> [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(35)[0;36mmain[0;34m()[0m
+[0;32m     34 [0;31m    )
+[0m[1;31m1[0;32m--> 35 [0;31m    missing, unexpected = model.load_state_dict(
+[0m[0;32m     36 [0;31m        [0mdist_util[0m[0;34m.[0m[0mload_state_dict[0m[0;34m([0m[0margs[0m[0;34m.[0m[0mmodel_path[0m[0;34m,[0m [0mmap_location[0m[0;34m=[0m[0;34m"cpu"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(36)[0;36mmain[0;34m()[0m
+[1;31m1[0;32m    35 [0;31m    missing, unexpected = model.load_state_dict(
+[0m[0;32m---> 36 [0;31m        [0mdist_util[0m[0;34m.[0m[0mload_state_dict[0m[0;34m([0m[0margs[0m[0;34m.[0m[0mmodel_path[0m[0;34m,[0m [0mmap_location[0m[0;34m=[0m[0;34m"cpu"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m     37 [0;31m    )
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(35)[0;36mmain[0;34m()[0m
+[0;32m     34 [0;31m    )
+[0m[1;31m1[0;32m--> 35 [0;31m    missing, unexpected = model.load_state_dict(
+[0m[0;32m     36 [0;31m        [0mdist_util[0m[0;34m.[0m[0mload_state_dict[0m[0;34m([0m[0margs[0m[0;34m.[0m[0mmodel_path[0m[0;34m,[0m [0mmap_location[0m[0;34m=[0m[0;34m"cpu"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(39)[0;36mmain[0;34m()[0m
+[0;32m     38 [0;31m[0;34m[0m[0m
+[0m[0;32m---> 39 [0;31m    [0mmodel[0m[0;34m.[0m[0mto[0m[0;34m([0m[0mdist_util[0m[0;34m.[0m[0mdev[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m     40 [0;31m    [0mschedule_sampler[0m [0;34m=[0m [0mcreate_named_schedule_sampler[0m[0;34m([0m[0margs[0m[0;34m.[0m[0mschedule_sampler[0m[0;34m,[0m [0mdiffusion[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> []
+ipdb> []
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/scripts/image_train_probs.py[0m(40)[0;36mmain[0;34m()[0m
+[0;32m     39 [0;31m    [0mmodel[0m[0;34m.[0m[0mto[0m[0;34m([0m[0mdist_util[0m[0;34m.[0m[0mdev[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m---> 40 [0;31m    [0mschedule_sampler[0m [0;34m=[0m [0mcreate_named_schedule_sampler[0m[0;34m([0m[0margs[0m[0;34m.[0m[0mschedule_sampler[0m[0;34m,[0m [0mdiffusion[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m     41 [0;31m    [0;31m# num_params = sum(p.numel() for p in model.parameters())[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> Breakpoint 2 at /group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py:162
+ipdb> Breakpoint 3 at /group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py:115
+ipdb> creating data loader...
+training...
+> [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py[0m(162)[0;36m__iter__[0;34m()[0m
+[0;32m    161 [0;31m[0;34m[0m[0m
+[0m[1;31m2[0;32m-> 162 [0;31m        [0;32mreturn[0m [0miter[0m[0;34m([0m[0msample_list[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    163 [0;31m[0;34m[0m[0m
+[0m
+ipdb> *** SyntaxError: invalid character '【' (U+3010)
+ipdb> 117
+ipdb> 398577
+ipdb> 1281165
+ipdb> 1
+ipdb> '/group/40033/public_datasets/imagenet64/raw/0001/0001_00000.png,0.4467158913612366'
+ipdb> [1;32m    157 [0m            [0mclasses_probs[0m [0;34m=[0m [0mclasses_probs[0m [0;34m/[0m [0mnp[0m[0;34m.[0m[0msum[0m[0;34m([0m[0mclasses_probs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    158 [0m            [0mselect_idx[0m [0;34m=[0m [0mnp[0m[0;34m.[0m[0mrandom[0m[0;34m.[0m[0mchoice[0m[0;34m([0m[0mnp[0m[0;34m.[0m[0marange[0m[0;34m([0m[0mlen[0m[0;34m([0m[0mclasses_probs[0m[0;34m)[0m[0;34m)[0m[0;34m,[0m [0msize[0m[0;34m=[0m[0mlen[0m[0;34m([0m[0mclasses_probs[0m[0;34m)[0m[0;34m,[0m [0mp[0m[0;34m=[0m[0mclasses_probs[0m[0;34m,[0m [0mreplace[0m[0;34m=[0m[0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    159 [0m            [0mselect_idx[0m [0;34m=[0m [0mselect_idx[0m [0;34m+[0m [0mlen[0m[0;34m([0m[0msample_list[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    160 [0m            [0msample_list[0m[0;34m.[0m[0mextend[0m[0;34m([0m[0mselect_idx[0m[0;34m.[0m[0mtolist[0m[0;34m([0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    161 [0m[0;34m[0m[0m
+[1;31m2[0;32m-> 162 [0;31m        [0;32mreturn[0m [0miter[0m[0;34m([0m[0msample_list[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    163 [0m[0;34m[0m[0m
+[1;32m    164 [0m    [0;32mdef[0m [0m__len__[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    165 [0m        [0;32mreturn[0m [0mlen[0m[0;34m([0m[0mself[0m[0;34m.[0m[0mdata_source[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m    166 [0m[0;34m[0m[0m
+[1;32m    167 [0m[0;34m[0m[0m
+
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py[0m(115)[0;36m__getitem__[0;34m()[0m
+[0;32m    114 [0;31m    [0;32mdef[0m [0m__getitem__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0midx[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;31m3[0;32m-> 115 [0;31m        [0mpath[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mlocal_images[0m[0;34m[[0m[0midx[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    116 [0;31m        [0;32mwith[0m [0mbf[0m[0;34m.[0m[0mBlobFile[0m[0;34m([0m[0mpath[0m[0;34m,[0m [0;34m"rb"[0m[0;34m)[0m [0;32mas[0m [0mf[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> 117
+ipdb> 'datasets/imagenet64/raw/0001/0001_00117.png'
+ipdb> 'datasets/imagenet64/raw/0002/0002_00117.png'
+ipdb> Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train_probs.py", line 103, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train_probs.py", line 71, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 158, in run_loop
+    batch, cond = next(self.data)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py", line 87, in load_data
+    yield from loader
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 633, in __next__
+    data = self._next_data()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 677, in _next_data
+    data = self._dataset_fetcher.fetch(index)  # may raise StopIteration
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in fetch
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/utils/data/_utils/fetch.py", line 51, in <listcomp>
+    data = [self.dataset[idx] for idx in possibly_batched_index]
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py", line 115, in __getitem__
+    path = self.local_images[idx]
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/image_datasets_from_probs.py", line 115, in __getitem__
+    path = self.local_images[idx]
+  File "/data/miniconda3/envs/svd/lib/python3.10/bdb.py", line 90, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/data/miniconda3/envs/svd/lib/python3.10/bdb.py", line 115, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+
+If you suspect this is an IPython 8.22.2 bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+

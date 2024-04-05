@@ -1,0 +1,288 @@
+Logging to /group/40005/yaoweili/checkpoints/0001_LR_1e-4_BTS_256*8_CFG0.1_ImgaNet64
+creating model and diffusion...
+creating data loader...
+training...
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 739.44 MiB is free. Process 1168334 has 78.42 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 725.44 MiB is free. Process 1168335 has 78.42 GiB memory in use. Process 1192399 has 14.00 MiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 739.44 MiB is free. Process 1168333 has 78.42 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 755.44 MiB is free. Process 1168329 has 78.40 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 739.44 MiB is free. Process 1168330 has 78.42 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 739.44 MiB is free. Process 1168332 has 78.42 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 947, in forward
+    h = module(h, emb)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 76, in forward
+    x = layer(x, emb)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 233, in forward
+    return checkpoint(
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 139, in checkpoint
+    return func(*inputs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 245, in _forward
+    h = self.in_layers(x)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/container.py", line 215, in forward
+    input = module(input)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 19, in forward
+    return super().forward(x.float()).type(x.dtype)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.50 GiB. GPU 0 has a total capacty of 79.14 GiB of which 1.18 GiB is free. Process 1168336 has 77.96 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.36 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 200, in forward_backward
+    losses = compute_losses()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 96, in training_losses
+    return super().training_losses(self._wrap_model(model), *args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/gaussian_diffusion.py", line 777, in training_losses
+    model_output = model(x_t, self._scale_timesteps(t), **model_kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/respace.py", line 128, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/unet.py", line 946, in forward
+    h = th.cat([h, hs.pop()], dim=1)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 768.00 MiB. GPU 0 has a total capacty of 79.14 GiB of which 739.44 MiB is free. Process 1168331 has 78.42 GiB memory in use. Of the allocated memory 74.17 GiB is allocated by PyTorch, and 1.74 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

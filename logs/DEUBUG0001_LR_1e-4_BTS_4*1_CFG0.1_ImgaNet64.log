@@ -1,0 +1,61 @@
+Logging to /group/40005/yaoweili/checkpoints/DEUBUG0001_LR_1e-4_BTS_4*1_CFG0.1_ImgaNet64
+creating model and diffusion...
+creating data loader...
+training...
+> [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py[0m(215)[0;36mforward_backward[0;34m()[0m
+[0;32m    214 [0;31m            [0;32mimport[0m [0mipdb[0m[0;34m;[0m [0mipdb[0m[0;34m.[0m[0mset_trace[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 215 [0;31m            [0mself[0m[0;34m.[0m[0mmp_trainer[0m[0;34m.[0m[0mbackward[0m[0;34m([0m[0mloss[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    216 [0;31m[0;34m[0m[0m
+[0m
+ipdb> --Call--
+> [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py[0m(176)[0;36mbackward[0;34m()[0m
+[0;32m    175 [0;31m[0;34m[0m[0m
+[0m[0;32m--> 176 [0;31m    [0;32mdef[0m [0mbackward[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mloss[0m[0;34m:[0m [0mth[0m[0;34m.[0m[0mTensor[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    177 [0;31m        [0;32mif[0m [0mself[0m[0;34m.[0m[0muse_fp16[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py[0m(177)[0;36mbackward[0;34m()[0m
+[0;32m    176 [0;31m    [0;32mdef[0m [0mbackward[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mloss[0m[0;34m:[0m [0mth[0m[0;34m.[0m[0mTensor[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 177 [0;31m        [0;32mif[0m [0mself[0m[0;34m.[0m[0muse_fp16[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    178 [0;31m            [0mloss_scale[0m [0;34m=[0m [0;36m2[0m [0;34m**[0m [0mself[0m[0;34m.[0m[0mlg_loss_scale[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py[0m(178)[0;36mbackward[0;34m()[0m
+[0;32m    177 [0;31m        [0;32mif[0m [0mself[0m[0;34m.[0m[0muse_fp16[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 178 [0;31m            [0mloss_scale[0m [0;34m=[0m [0;36m2[0m [0;34m**[0m [0mself[0m[0;34m.[0m[0mlg_loss_scale[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    179 [0;31m            [0;34m([0m[0mloss[0m [0;34m*[0m [0mloss_scale[0m[0;34m)[0m[0;34m.[0m[0mbackward[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> > [0;32m/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py[0m(179)[0;36mbackward[0;34m()[0m
+[0;32m    178 [0;31m            [0mloss_scale[0m [0;34m=[0m [0;36m2[0m [0;34m**[0m [0mself[0m[0;34m.[0m[0mlg_loss_scale[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m--> 179 [0;31m            [0;34m([0m[0mloss[0m [0;34m*[0m [0mloss_scale[0m[0;34m)[0m[0;34m.[0m[0mbackward[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[0;32m    180 [0;31m        [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0m
+ipdb> ipdb> Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 215, in forward_backward
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    (loss * loss_scale).backward()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/bdb.py", line 90, in trace_dispatch
+    return self.dispatch_line(frame)
+  File "/data/miniconda3/envs/svd/lib/python3.10/bdb.py", line 115, in dispatch_line
+    if self.quitting: raise BdbQuit
+bdb.BdbQuit
+
+If you suspect this is an IPython 8.22.2 bug, please report it at:
+    https://github.com/ipython/ipython/issues
+or send an email to the mailing list at ipython-dev@python.org
+
+You can print a more detailed traceback right now with "%tb", or use "%debug"
+to interactively debug it.
+
+Extra-detailed tracebacks for bug-reporting purposes can be enabled via:
+    %config Application.verbose_crash=True
+

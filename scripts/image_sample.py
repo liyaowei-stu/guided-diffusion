@@ -24,13 +24,13 @@ def main():
     args = create_argparser().parse_args()
 
     dist_util.setup_dist()
-    logger.configure()
-
+    logger.configure(dir=args.outputs_dir)
+    # import ipdb; ipdb.set_trace()
     logger.log("creating model and diffusion...")
     model, diffusion = create_model_and_diffusion(
         **args_to_dict(args, model_and_diffusion_defaults().keys())
     )
-    model.load_state_dict(
+    missing, unexpected = model.load_state_dict(
         dist_util.load_state_dict(args.model_path, map_location="cpu")
     )
     model.to(dist_util.dev())
@@ -60,7 +60,7 @@ def main():
         sample = ((sample + 1) * 127.5).clamp(0, 255).to(th.uint8)
         sample = sample.permute(0, 2, 3, 1)
         sample = sample.contiguous()
-
+        # Image.fromarray(np.array(sample[2].cpu())).save("0003_250.jpg")
         gathered_samples = [th.zeros_like(sample) for _ in range(dist.get_world_size())]
         dist.all_gather(gathered_samples, sample)  # gather not supported with NCCL
         all_images.extend([sample.cpu().numpy() for sample in gathered_samples])
@@ -97,6 +97,7 @@ def create_argparser():
         batch_size=16,
         use_ddim=False,
         model_path="",
+        outputs_dir="",
     )
     defaults.update(model_and_diffusion_defaults())
     parser = argparse.ArgumentParser()

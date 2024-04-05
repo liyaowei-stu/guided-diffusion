@@ -157,6 +157,7 @@ class TrainLoop:
         ):
             batch, cond = next(self.data)
             self.run_step(batch, cond)
+            th.cuda.empty_cache()
             if self.step % self.log_interval == 0:
                 logger.dumpkvs()
             if self.step % self.save_interval == 0:
@@ -170,6 +171,7 @@ class TrainLoop:
             self.save()
 
     def run_step(self, batch, cond):
+        
         self.forward_backward(batch, cond)
         took_step = self.mp_trainer.optimize(self.opt)
         if took_step:
@@ -299,3 +301,9 @@ def log_loss_dict(diffusion, ts, losses):
         for sub_t, sub_loss in zip(ts.cpu().numpy(), values.detach().cpu().numpy()):
             quartile = int(4 * sub_t / diffusion.num_timesteps)
             logger.logkv_mean(f"{key}_q{quartile}", sub_loss)
+
+
+def expand_dims_like(x, y):
+    while x.dim() != y.dim():
+        x = x.unsqueeze(-1)
+    return x

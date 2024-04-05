@@ -27,7 +27,7 @@ from guided_diffusion.train_util import parse_resume_step_from_filename, log_los
 
 def main():
     args = create_argparser().parse_args()
-
+    import ipdb; ipdb.set_trace()
     dist_util.setup_dist()
     logger.configure()
 

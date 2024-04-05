@@ -1,0 +1,220 @@
+Logging to /group/40005/yaoweili/checkpoints/0001_LR_1e-4_BTS_220*8_CFG0.1_ImgaNet64
+creating model and diffusion...
+creating data loader...
+training...
+----------------------------
+| grad_norm     | 3.47     |
+| lg_loss_scale | 20       |
+| loss          | 1.01     |
+| loss_q0       | 1.02     |
+| loss_q1       | 1        |
+| loss_q2       | 1        |
+| loss_q3       | 1.03     |
+| mse           | 0.999    |
+| mse_q0        | 0.999    |
+| mse_q1        | 0.998    |
+| mse_q2        | 1        |
+| mse_q3        | 0.997    |
+| param_norm    | 926      |
+| samples       | 1.76e+03 |
+| step          | 0        |
+| vb            | 0.0151   |
+| vb_q0         | 0.0231   |
+| vb_q1         | 0.00502  |
+| vb_q2         | 0.00498  |
+| vb_q3         | 0.0299   |
+----------------------------
+saving model 0...
+saving model 0.9999...
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.44 GiB is free. Process 1197629 has 856.00 MiB memory in use. Process 1226285 has 75.86 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.33 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.44 GiB is free. Process 1197622 has 856.00 MiB memory in use. Process 1226281 has 75.86 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.33 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.30 GiB is free. Process 1197627 has 856.00 MiB memory in use. Process 1226283 has 76.00 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.47 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.77 GiB is free. Process 1197621 has 856.00 MiB memory in use. Process 1226280 has 75.54 GiB memory in use. Of the allocated memory 64.82 GiB is allocated by PyTorch, and 8.01 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+Traceback (most recent call last):
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 93, in <module>
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    main()
+  File "/group/40034/yaoweili/code/guided-diffusion/./scripts/image_train.py", line 64, in main
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.28 GiB is free. Process 1197628 has 856.00 MiB memory in use. Process 1226284 has 76.03 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.50 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.38 GiB is free. Process 1197630 has 856.00 MiB memory in use. Process 1226286 has 75.92 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.47 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    ).run_loop()
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 159, in run_loop
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    self.run_step(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 173, in run_step
+    self.forward_backward(batch, cond)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/train_util.py", line 214, in forward_backward
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    self.mp_trainer.backward(loss)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/fp16_util.py", line 179, in backward
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.78 GiB is free. Process 1197620 has 856.00 MiB memory in use. Process 1226279 has 75.52 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.01 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+    (loss * loss_scale).backward()
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/_tensor.py", line 492, in backward
+    torch.autograd.backward(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 251, in backward
+    Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/function.py", line 288, in apply
+    return user_fn(self, *args)
+  File "/group/40034/yaoweili/code/guided-diffusion/guided_diffusion/nn.py", line 161, in backward
+    input_grads = th.autograd.grad(
+  File "/data/miniconda3/envs/svd/lib/python3.10/site-packages/torch/autograd/__init__.py", line 394, in grad
+    result = Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.16 GiB. GPU 0 has a total capacty of 79.14 GiB of which 2.77 GiB is free. Process 1197624 has 856.00 MiB memory in use. Process 1226282 has 75.54 GiB memory in use. Of the allocated memory 64.81 GiB is allocated by PyTorch, and 8.01 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF

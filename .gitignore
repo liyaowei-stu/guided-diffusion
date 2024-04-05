@@ -1,3 +1,22 @@
-.DS_Store
-__pycache__/
-classify_image_graph_def.pb
+examples/
+.vscode/
+
+# extensions
+*.egg-info
+*.py[cod]
+
+# envs
+.pt13
+.pt2
+*.pyc
+
+
+# directories
+checkpoints/
+cfg_step/
+sample/
+/dist
+outputs/
+datasets/
+/src
+**/__pycache__

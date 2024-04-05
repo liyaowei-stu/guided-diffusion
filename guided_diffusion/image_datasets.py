@@ -6,7 +6,7 @@ import blobfile as bf
 from mpi4py import MPI
 import numpy as np
 from torch.utils.data import DataLoader, Dataset
-
+import json
 
 def load_data(
     *,
@@ -44,8 +44,18 @@ def load_data(
         # Assume classes are the first part of the filename,
         # before an underscore.
         class_names = [bf.basename(path).split("_")[0] for path in all_files]
+        #  将按torch存储的label转换为 caffe，和原始guided对齐
+        with open('datasets/imagenet64/th_to_caffe_label.json', 'r') as handle:
+            th_to_caffe_label = json.load(handle)
+        class_names = [str(th_to_caffe_label[class_name]) for class_name in class_names]
         sorted_classes = {x: i for i, x in enumerate(sorted(set(class_names)))}
         classes = [sorted_classes[x] for x in class_names]
+
+        for idx, files in enumerate(all_files):
+            output_str = f"{files},{classes[idx]}"
+            with open("imagenet64_caffe.txt", 'a') as f:
+                f.write(output_str + '\n')
+
     dataset = ImageDataset(
         image_size,
         all_files,
@@ -57,11 +67,11 @@ def load_data(
     )
     if deterministic:
         loader = DataLoader(
-            dataset, batch_size=batch_size, shuffle=False, num_workers=1, drop_last=True
+            dataset, batch_size=batch_size, shuffle=False, num_workers=0, drop_last=True
         )
     else:
         loader = DataLoader(
-            dataset, batch_size=batch_size, shuffle=True, num_workers=1, drop_last=True
+            dataset, batch_size=batch_size, shuffle=True, num_workers=0, drop_last=True
         )
     while True:
         yield from loader
@@ -69,6 +79,7 @@ def load_data(
 
 def _list_image_files_recursively(data_dir):
     results = []
+    debug_idx = 0
     for entry in sorted(bf.listdir(data_dir)):
         full_path = bf.join(data_dir, entry)
         ext = entry.split(".")[-1]
@@ -76,6 +87,10 @@ def _list_image_files_recursively(data_dir):
             results.append(full_path)
         elif bf.isdir(full_path):
             results.extend(_list_image_files_recursively(full_path))
+        if len(results) % 5000 == 0:
+            print(f"process file = {len(results)}")
+            
+
     return results
 
 

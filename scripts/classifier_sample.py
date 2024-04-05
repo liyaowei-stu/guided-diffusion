@@ -4,12 +4,15 @@ process towards more realistic images.
 """
 
 import argparse
-import os
+import os,sys
 
 import numpy as np
 import torch as th
 import torch.distributed as dist
 import torch.nn.functional as F
+
+
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
 from guided_diffusion import dist_util, logger
 from guided_diffusion.script_util import (
@@ -25,22 +28,24 @@ from guided_diffusion.script_util import (
 
 def main():
     args = create_argparser().parse_args()
-
     dist_util.setup_dist()
     logger.configure()
 
     logger.log("creating model and diffusion...")
+    import ipdb; ipdb.set_trace()
+
     model, diffusion = create_model_and_diffusion(
         **args_to_dict(args, model_and_diffusion_defaults().keys())
     )
-    model.load_state_dict(
+    m,u = model.load_state_dict(
         dist_util.load_state_dict(args.model_path, map_location="cpu")
     )
     model.to(dist_util.dev())
     if args.use_fp16:
         model.convert_to_fp16()
     model.eval()
-
+    # num_params = sum(p.numel() for p in model.parameters())
+    # print(f'The model has {num_params} parameters.')
     logger.log("loading classifier...")
     classifier = create_classifier(**args_to_dict(args, classifier_defaults().keys()))
     classifier.load_state_dict(

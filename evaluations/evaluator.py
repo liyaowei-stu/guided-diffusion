@@ -28,14 +28,16 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("ref_batch", help="path to reference batch npz file")
     parser.add_argument("sample_batch", help="path to sample batch npz file")
+    parser.add_argument("--batch_size", type=int, help="eval batch size")
     args = parser.parse_args()
 
     config = tf.ConfigProto(
         allow_soft_placement=True  # allows DecodeJpeg to run on CPU in Inception graph
     )
     config.gpu_options.allow_growth = True
-    evaluator = Evaluator(tf.Session(config=config))
-
+    import ipdb;ipdb.set_trace()
+    
+    evaluator = Evaluator(tf.Session(config=config), batch_size=args.batch_size)
     print("warming up TensorFlow...")
     # This will cause TF to print a bunch of verbose stuff now rather
     # than after the next print(), to help prevent confusion.
@@ -52,12 +54,14 @@ def main():
     sample_stats, sample_stats_spatial = evaluator.read_statistics(args.sample_batch, sample_acts)
 
     print("Computing evaluations...")
+    print("Reference Inception Score:", evaluator.compute_inception_score(ref_acts[0]))
+
     print("Inception Score:", evaluator.compute_inception_score(sample_acts[0]))
     print("FID:", sample_stats.frechet_distance(ref_stats))
     print("sFID:", sample_stats_spatial.frechet_distance(ref_stats_spatial))
-    prec, recall = evaluator.compute_prec_recall(ref_acts[0], sample_acts[0])
-    print("Precision:", prec)
-    print("Recall:", recall)
+    # prec, recall = evaluator.compute_prec_recall(ref_acts[0], sample_acts[0])
+    # print("Precision:", prec)
+    # print("Recall:", recall)
 
 
 class InvalidFIDException(Exception):
@@ -138,6 +142,10 @@ class Evaluator:
     def read_activations(self, npz_path: str) -> Tuple[np.ndarray, np.ndarray]:
         with open_npz_array(npz_path, "arr_0") as reader:
             return self.compute_activations(reader.read_batches(self.batch_size))
+        
+    def read_activations_from_numpy(self, image) -> Tuple[np.ndarray, np.ndarray]:
+        image = MemoryNpzArrayReader(image)
+        return self.compute_activations(image.read_batches(self.batch_size))
 
     def compute_activations(self, batches: Iterable[np.ndarray]) -> Tuple[np.ndarray, np.ndarray]:
         """
@@ -150,7 +158,7 @@ class Evaluator:
         preds = []
         spatial_preds = []
         for batch in tqdm(batches):
-            batch = batch.astype(np.float32)
+            batch = batch.astype(np.float32) # b h w c, 0-255
             pred, spatial_pred = self.sess.run(
                 [self.pool_features, self.spatial_features], {self.image_input: batch}
             )
